@@ -1,0 +1,38 @@
+
+{% extends 'base.html'%}
+{% block content %}
+<h1> Join Us Now! </h1>
+
+ {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %} 
+
+
+<form method="POST" action={% url 'join' %}>
+ {% csrf_token %}
+ <br><br>
+ 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">first_name</label>
+    <input type="text" class="form-control" id="exampleIn" name="first_name">
+    </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">last_name</label>
+    <input type="text" class="form-control" id="exampleInput" name="last_name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">instrument</label>
+    <input type="text" class="form-control" id="exampleInput" name="instrument"
+  </div>
+  <br><br>
+
+   
+  <button type="submit" class="btn btn-secondary">SignIn</button>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="nav justify-content-end">
+  {% if user.is_authenticated%}
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+  
+   {% else %}
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'login' %}">Login</a>
+  </li>
+  {%endif%}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'legister' %}">Legister</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+<li class="nav-item">
+  
+ 
+    <a class="nan-link" href="{% url 'login' %}">
+      Login
+    </a>
+  </li>
+
+  {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %} 
+
+  <h1> Musician database</h1>
+  {% comment %} #<p>{{all}}</p> {% endcomment %}
+  {% comment %} {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %} {% endcomment %}
+
+
+
+<div class="row">
+  
+ 
+  {% for item in all%}
+
+  <div class="col-sm-2 part_2">
+  <p><strong> first_name:{{item.first_name}}</strong> </p>
+     <p> <strong> last_name:{{item.last_name}}</strong> </p>
+      <p><strong> instument:{{item.instrument}}</strong></p>
+  
+  </div>
+  <br><br>
+  {% endfor %}
+  
+</div>
+{% endblock content %}
+  
+
